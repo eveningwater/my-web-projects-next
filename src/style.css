@@ -1,0 +1,63 @@
+body,
+ul,
+li,
+a,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
+  padding: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mwp-nav {
+  max-width: 960px;
+  min-width: 60%;
+}
+
+.mwp-ul {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  list-style: none;
+}
+
+.mwp-link {
+  padding: 18px;
+  font-family: "Open Sans";
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+}
+
+.mwp-link:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(0, 35, 122, 0.7);
+}
+
+.mwp-github {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+.mwp-link-icon>path {
+  transition: all .4s ease-in-out;
+}
