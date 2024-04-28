@@ -4,7 +4,7 @@ export interface ArgumentArray extends Array<Argument> {}
 export type Argument = Mapping | Mapping | ArgumentArray;
 const hasOwn = Object.prototype.hasOwnProperty;
 export default function classnames(...args:ArgumentArray):string{
-    const classes = [];
+    const classes: string [] = [];
     for(let i = 0,len = args.length;i < len;i++){
         const arg = args[i];
         if(!arg){

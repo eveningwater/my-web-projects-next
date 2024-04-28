@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { defineComponent, PropType, VNodeArrayChildren, VNode, provide, watch, ref } from "vue";
 import clickoutside from "../directive/clickoutside";
-import classnames from "../utils/classnames";
+import classnames from "classnames";
 export default defineComponent({
     props: {
         placeholder: String as PropType<string>,

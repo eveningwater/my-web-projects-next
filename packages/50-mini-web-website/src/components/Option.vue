@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { defineComponent, inject, PropType, computed, Ref } from "vue";
-import classnames from "../utils/classnames";
+import classnames from "classnames";
 export default defineComponent({
     props: {
         label: String as PropType<string>,

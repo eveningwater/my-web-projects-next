@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "alert.js",
-  "typings": "./typings/index.d.ts",
+  "typings": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
