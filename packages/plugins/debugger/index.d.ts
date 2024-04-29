@@ -1,2 +1,2 @@
-declare const openDebugger: (t: string) => void;
+declare const openDebugger: (t?: string) => void;
 export default openDebugger;

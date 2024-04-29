@@ -126,6 +126,12 @@ importers:
         specifier: ^5.2.10
         version: 5.2.10
 
+  packages/projects/vue/3:
+    dependencies:
+      vite:
+        specifier: ^5.2.10
+        version: 5.2.10
+
   packages/utils: {}
 
 packages:
