@@ -12,6 +12,12 @@ ewUtils.prototype = {
   isMobile() {
     return !!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i);
   },
+  $(selector, el = document) {
+    return el.querySelector(selector);
+  },
+  $$(selector, el = document) {
+    return el.querySelectorAll(selector);
+  },
   isServer: typeof window === 'undefined',
   on(element, type, handler, useCapture = false) {
     if (element && type && handler) {
@@ -51,6 +57,29 @@ ewUtils.prototype = {
   },
   getRect(element) {
     return element.getBoundingClientRect();
+  },
+  hasClass(el, className) {
+    if (el.classList.contains) {
+      return el.classList.contains(className);
+    } else {
+      const matchRegExp = new RegExp('(^|\\s)' + className + '(\\s|$)');
+      return matchRegExp.test(el.className);
+    }
+  },
+  addClass(el, className) {
+    return el.classList.add(className);
+  },
+  removeClass(el, className) {
+    return el.classList.remove(className);
+  },
+  replaceClass(el, className, newClassName) {
+    return el.classList.replace(className, newClassName);
+  },
+  toggleClass(el, className) {
+    return el.classList.toggle(className);
+  },
+  toArray(value) {
+    return Array.from ? Array.from(value) : Array.prototype.slice.call(value);
   }
 };
 
