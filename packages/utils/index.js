@@ -55,6 +55,9 @@ ewUtils.prototype = {
   isFunction(v) {
     return typeof v === 'function';
   },
+  isObject(v) {
+    return v && typeof v === 'object';
+  },
   getRect(element) {
     return element.getBoundingClientRect();
   },
@@ -80,6 +83,43 @@ ewUtils.prototype = {
   },
   toArray(value) {
     return Array.from ? Array.from(value) : Array.prototype.slice.call(value);
+  },
+  setStyle(el, style = {}) {
+    return this.assign(el.style, style);
+  },
+  assign(target, ...args) {
+    if (Object.assign) {
+      return Object.assign(target, ...args);
+    } else {
+      if (target === null) {
+        return;
+      }
+      const _ = Object(target);
+      args.forEach(item => {
+        if (this.isObject(item)) {
+          for (let key in item) {
+            if (Object.prototype.hasOwnProperty.call(item, key)) {
+              _[key] = item[key];
+            }
+          }
+        }
+      });
+      return _;
+    }
+  },
+  create(tagName) {
+    return document.createElement(tagName);
+  },
+  isNotEmptyObject(o) {
+    return this.isObject(o) && Object.keys(o).length > 0;
+  },
+  setAttr(el, attr = {}) {
+    if (!this.isNotEmptyObject(attr)) {
+      return;
+    }
+    for (const k in attr) {
+      el.setAttribute(k, attr[k]);
+    }
   }
 };
 

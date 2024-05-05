@@ -126,6 +126,15 @@ importers:
         specifier: ^5.2.11
         version: 5.2.11(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0)(terser@5.30.4)
 
+  packages/projects/js/4:
+    dependencies:
+      ew-utils:
+        specifier: workspace:*
+        version: link:../../../utils
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0)(terser@5.30.4)
+
   packages/utils: {}
 
 packages:
