@@ -1,7 +1,8 @@
-import './style.css'
-
-
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+import './style.css';
+import ewUtils from 'ew-utils';
+const utils = new ewUtils();
+const { $, toArray, on } = utils;
+$('#app')!.innerHTML = `
 <div class="mwp-nav">
 <ul class="mwp-ul"></ul>
 </div>
@@ -35,20 +36,18 @@ const linkList = [
     href: "./website/index.html"
   }
 ];
-const $ = (selector: string) => document.querySelector(selector);
-const container = $(".mwp-ul") as HTMLElement;
+const container = $(".mwp-ul"), githubIcon = $(".mwp-link-icon");
 let containerHTML = "";
 linkList.forEach(link => {
   containerHTML += `<li class="mwp-li"><a href="${link.href}" target="_blank" rel="noopener noreferrer" class="mwp-link">${link.text}</a></li>`
 });
-container.innerHTML = containerHTML;
-const githubIcon = $(".mwp-link-icon") as HTMLElement;
+container!.innerHTML = containerHTML;
 const handleColor = (children: HTMLCollection, color: string) => {
-  Array.from(children).forEach(item => item.setAttribute("fill", color));
+  toArray(children).forEach(item => utils.setAttr(item as HTMLElement, { "fill": color }));
 }
-githubIcon.addEventListener("mouseenter", () => {
-  handleColor(githubIcon.children, "rgba(0, 35, 122, 0.7)");
+on(githubIcon!, 'mouseenter', () => {
+  handleColor(githubIcon!.children, "rgba(0, 35, 122, 0.7)");
 });
-githubIcon.addEventListener("mouseleave", () => {
-  handleColor(githubIcon.children, "#ffffff");
-});
+on(githubIcon!, 'mouseleave', () => {
+  handleColor(githubIcon!.children, "#ffffff");
+})

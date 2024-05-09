@@ -16,13 +16,13 @@ interface Utils {
     isServer: boolean;
     eventType: string[];
     isMobile: () => boolean;
-    on: (e: EventElement, t: string, c: EventListenerOrEventListenerObject, u: boolean) => void;
-    off: (e: EventElement, t: string, c: EventListenerOrEventListenerObject, u: boolean) => void;
+    on: (e: EventElement, t: string, c: EventListenerOrEventListenerObject, u?: boolean) => void;
+    off: (e: EventElement, t: string, c: EventListenerOrEventListenerObject, u?: boolean) => void;
     baseClickOutSide: (e: HTMLElement, b: boolean, c: (arg0: EventTarget, arg1: DOMRect) => void) => void;
     isFunction: <T>(v: T) => boolean;
     getRect: (e: HTMLElement | Range) => DOMRect;
-    $: (s: string, e: QueryElement) => HTMLElement | null;
-    $$: (s: string, e: QueryElement) => NodeListOf<HTMLElement>;
+    $: (s: string, e?: QueryElement) => HTMLElement | null;
+    $$: (s: string, e?: QueryElement) => NodeListOf<HTMLElement>;
     hasClass: (e: HTMLElement, c: string) => boolean;
     addClass: (e: HTMLElement, c: string) => void;
     removeClass: (e: HTMLElement, c: string) => void;
@@ -36,5 +36,5 @@ interface Utils {
     isNotEmptyObject: <T>(o: T) => boolean;
     setAttr: <T extends object>(el: HTMLElement, a: T) => void;
 }
-declare const ewUtils: () => Utils;
+declare const ewUtils: new () => Utils;
 export default ewUtils;
