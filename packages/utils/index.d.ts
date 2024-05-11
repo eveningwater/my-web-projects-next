@@ -35,6 +35,7 @@ interface Utils {
     isObject: <T>(o: T) => boolean;
     isNotEmptyObject: <T>(o: T) => boolean;
     setAttr: <T extends object>(el: HTMLElement, a: T) => void;
+    getAttr: (el: HTMLElement, p: string[]) => string[]
 }
 declare const ewUtils: new () => Utils;
 export default ewUtils;

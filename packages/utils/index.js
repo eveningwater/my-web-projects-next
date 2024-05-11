@@ -120,6 +120,16 @@ ewUtils.prototype = {
     for (const k in attr) {
       el.setAttribute(k, attr[k]);
     }
+  },
+  getAttr(el,paths = []){
+    const res = [];
+    for(const key of paths){
+      const value = el.getAttribute(key);
+      if(value !== null){
+        res.push(value);
+      }
+    }
+    return res;
   }
 };
 
