@@ -1,3 +1,11 @@
 .flex {
   display: flex;
 }
+.navbar-items-wrapper {
+  overflow: auto;
+}
+
+.navbar-items-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
