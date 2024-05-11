@@ -126,6 +126,12 @@ importers:
         specifier: ^5.2.10
         version: 5.2.11(@types/node@20.12.11)(less@4.2.0)(sass@1.75.0)(terser@5.30.4)
 
+  packages/projects/css/4:
+    dependencies:
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.11)(less@4.2.0)(sass@1.75.0)(terser@5.30.4)
+
   packages/projects/js/5:
     dependencies:
       ew-utils:
