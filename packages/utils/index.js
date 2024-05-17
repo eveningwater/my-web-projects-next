@@ -121,11 +121,11 @@ ewUtils.prototype = {
       el.setAttribute(k, attr[k]);
     }
   },
-  getAttr(el,paths = []){
+  getAttr(el, paths = []) {
     const res = [];
-    for(const key of paths){
+    for (const key of paths) {
       const value = el.getAttribute(key);
-      if(value !== null){
+      if (value !== null) {
         res.push(value);
       }
     }
