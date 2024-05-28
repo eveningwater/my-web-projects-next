@@ -1,0 +1,17 @@
+.container {
+    padding: 15px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.base-pre {
+    background-color: #494949;
+    padding: 12px 47px 12px 12px;
+    border-radius: 4px;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 15px;
+    color: #fff;
+}

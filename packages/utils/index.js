@@ -52,6 +52,9 @@ ewUtils.prototype = {
     };
     this.on(document, this.eventType[0], mouseHandler);
   },
+  isString(v) {
+    return typeof v === 'string';
+  },
   isFunction(v) {
     return typeof v === 'function';
   },
@@ -130,6 +133,44 @@ ewUtils.prototype = {
       }
     }
     return res;
+  },
+  trunc(x) {
+    return (
+      Math.trunc(x) ||
+      (function (x) {
+        let n = +x;
+        return (n > 0 ? Math.floor : Math.ceil)(x);
+      })(x)
+    );
+  },
+  toIntOrInf(x) {
+    let n = +x;
+    return n !== n || n === 0 ? 0 : this.trunc(n);
+  },
+  substr(str, s, l) {
+    if (!this.isString(str)) {
+      str = String(str);
+    }
+    const size = str.length;
+    let intStart = this.toIntOrInf(s);
+    let intLength, intEnd;
+    if (intStart === Infinity) intStart = 0;
+    if (intStart < 0) intStart = Math.max(size + intStart, 0);
+    intLength = l === undefined ? size : this.toIntOrInf(l);
+    if (intLength <= 0 || intLength === Infinity) return '';
+    intEnd = Math.min(intStart + intLength, size);
+    return intStart >= intEnd
+      ? ''
+      : String.prototype.slice.call(str, intStart, intEnd);
+  },
+  createUUID() {
+    return (
+      this.substr((Math.random() * 10000000).toString(16), 0, 4) +
+      '-' +
+      new Date().getTime() +
+      '-' +
+      this.substr(Math.random().toString(), 2, 5)
+    );
   }
 };
 
