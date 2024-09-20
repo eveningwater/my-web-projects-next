@@ -3,13 +3,16 @@ import { miniWebsiteViteConfig } from "./packages/50-mini-web-website/vite.confi
 import path from "path";
 
 export default defineConfig((options) => {
-  // const { mode } = options;
-  // const { VITE_MINI_WEBSITE_PROJECT, VITE_HOME_PROJECT } = loadEnv(mode, process.cwd());
-  // if (VITE_MINI_WEBSITE_PROJECT === '50-website') {
-  //     return {
-  //         ...miniWebsiteViteConfig as UserConfig
-  //     };
-  // }
+  const { mode } = options;
+  const { VITE_MINI_WEBSITE_PROJECT, VITE_HOME_PROJECT } = loadEnv(
+    mode,
+    process.cwd()
+  );
+  if (VITE_MINI_WEBSITE_PROJECT === "50-website") {
+    return {
+      ...(miniWebsiteViteConfig as UserConfig),
+    };
+  }
   return {
     base: "./",
     resolve: {
