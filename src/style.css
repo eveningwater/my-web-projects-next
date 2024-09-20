@@ -16,12 +16,21 @@ html {
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
-  padding: 10px;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.micro-app-main {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* height: 100%; */
+  padding: 10px;
+}
+
+.micro-app-child {
+  width: 100%;
+  height: 100%;
 }
 
 .mwp-nav {

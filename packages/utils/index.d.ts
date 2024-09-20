@@ -38,5 +38,7 @@ interface Utils {
     getAttr: (el: HTMLElement, p: string[]) => string[];
     createUUID: () => string;
 }
-declare const ewUtils: new () => Utils;
+
+declare const ewUtils: Utils;
+
 export default ewUtils;

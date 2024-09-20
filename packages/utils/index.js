@@ -1,11 +1,9 @@
-const ewUtils = function () {
-  if (new.target !== ewUtils) {
-    throw new Error('error');
-  }
+
+export const ewUtils = function() {
   this.eventType = this.isMobile()
-    ? ['touchstart', 'touchmove', 'touchend']
-    : ['mousedown', 'mousemove', 'mouseup'];
-};
+  ? ['touchstart', 'touchmove', 'touchend']
+  : ['mousedown', 'mousemove', 'mouseup'];
+}
 
 ewUtils.prototype = {
   constructor: ewUtils,
@@ -174,4 +172,6 @@ ewUtils.prototype = {
   }
 };
 
-export default ewUtils;
+const utils = new ewUtils();
+
+export default utils;

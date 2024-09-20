@@ -1,17 +1,21 @@
 import { defineConfig, PluginOption, UserConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import qiankun from 'vite-plugin-qiankun'
 import path from "path";
 
 export const miniWebsiteViteConfig: UserConfig = {
-  plugins: [vue(), vueJsx() as PluginOption],
+  plugins: [qiankun('50-mini-website', { useDevMode: true }),vue(), vueJsx() as PluginOption],
   esbuild: {
     jsxFactory: "h",
     jsxFragment: "Fragment"
   },
   base: "./",
   server: {
-    port: 8081
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    cors: true,
   },
   resolve: {
     alias: [
