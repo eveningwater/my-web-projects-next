@@ -1,37 +1,30 @@
-import { App as RootApp,createApp } from 'vue'
-import { qiankunWindow,renderWithQiankun } from 'vite-plugin-qiankun/dist/helper';
-import App from './App.vue'
-
-createApp(App).mount('#app')
+import { App as RootApp, createApp } from "vue";
+import {
+  qiankunWindow,
+  renderWithQiankun,
+} from "vite-plugin-qiankun/dist/helper";
+import App from "./App.vue";
 
 let root: RootApp;
 
-function render(props: any) {
+const render = (props: { container?: HTMLElement }) => {
   const { container } = props;
-  root = createApp(App)
+  root = createApp(App);
   const c = container
     ? container.querySelector("#app")
-    : document.getElementById("app")
-  root.mount(c)
-}
-console.log(3333)
+    : document.getElementById("app");
+  root.mount(c);
+};
 
 renderWithQiankun({
   mount(props) {
-    console.log("vue3sub mount");
     render(props);
   },
-  bootstrap() {
-    console.log("bootstrap");
-  },
-  unmount(props: any) {
-    console.log("vue3sub unmount");
+  bootstrap() {},
+  unmount() {
     root.unmount();
   },
-  update(props: any) {
-    console.log("vue3sub update");
-    console.log(props)
-  },
+  update() {},
 });
 
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {

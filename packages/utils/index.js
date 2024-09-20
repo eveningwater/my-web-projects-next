@@ -1,9 +1,8 @@
-
-export const ewUtils = function() {
+export const ewUtils = function () {
   this.eventType = this.isMobile()
-  ? ['touchstart', 'touchmove', 'touchend']
-  : ['mousedown', 'mousemove', 'mouseup'];
-}
+    ? ["touchstart", "touchmove", "touchend"]
+    : ["mousedown", "mousemove", "mouseup"];
+};
 
 ewUtils.prototype = {
   constructor: ewUtils,
@@ -16,7 +15,7 @@ ewUtils.prototype = {
   $$(selector, el = document) {
     return el.querySelectorAll(selector);
   },
-  isServer: typeof window === 'undefined',
+  isServer: typeof window === "undefined",
   on(element, type, handler, useCapture = false) {
     if (element && type && handler) {
       element.addEventListener(type, handler, useCapture);
@@ -28,7 +27,7 @@ ewUtils.prototype = {
     }
   },
   baseClickOutSide(element, isUnbind = true, callback) {
-    const mouseHandler = event => {
+    const mouseHandler = (event) => {
       const target = event.target;
       if (!target) return;
       const targetRect = this.getRect(target);
@@ -51,13 +50,13 @@ ewUtils.prototype = {
     this.on(document, this.eventType[0], mouseHandler);
   },
   isString(v) {
-    return typeof v === 'string';
+    return typeof v === "string";
   },
   isFunction(v) {
-    return typeof v === 'function';
+    return typeof v === "function";
   },
   isObject(v) {
-    return v && typeof v === 'object';
+    return v && typeof v === "object";
   },
   getRect(element) {
     return element.getBoundingClientRect();
@@ -66,7 +65,7 @@ ewUtils.prototype = {
     if (el.classList.contains) {
       return el.classList.contains(className);
     } else {
-      const matchRegExp = new RegExp('(^|\\s)' + className + '(\\s|$)');
+      const matchRegExp = new RegExp("(^|\\s)" + className + "(\\s|$)");
       return matchRegExp.test(el.className);
     }
   },
@@ -96,7 +95,7 @@ ewUtils.prototype = {
         return;
       }
       const _ = Object(target);
-      args.forEach(item => {
+      args.forEach((item) => {
         if (this.isObject(item)) {
           for (let key in item) {
             if (Object.prototype.hasOwnProperty.call(item, key)) {
@@ -155,21 +154,35 @@ ewUtils.prototype = {
     if (intStart === Infinity) intStart = 0;
     if (intStart < 0) intStart = Math.max(size + intStart, 0);
     intLength = l === undefined ? size : this.toIntOrInf(l);
-    if (intLength <= 0 || intLength === Infinity) return '';
+    if (intLength <= 0 || intLength === Infinity) return "";
     intEnd = Math.min(intStart + intLength, size);
     return intStart >= intEnd
-      ? ''
+      ? ""
       : String.prototype.slice.call(str, intStart, intEnd);
   },
   createUUID() {
     return (
       this.substr((Math.random() * 10000000).toString(16), 0, 4) +
-      '-' +
+      "-" +
       new Date().getTime() +
-      '-' +
+      "-" +
       this.substr(Math.random().toString(), 2, 5)
     );
-  }
+  },
+  setContent(el, text) {
+    if (el instanceof HTMLElement) {
+      el.textContent = text;
+    }
+  },
+  removeStyle(el, prop) {
+    if (el instanceof HTMLElement) {
+      if (Array.isArray(prop)) {
+        prop.forEach((item) => el.style.removeProperty(item));
+      } else {
+        el.style.removeProperty(prop);
+      }
+    }
+  },
 };
 
 const utils = new ewUtils();
