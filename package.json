@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "npm run dev:50-website & npm run dev",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "dev:50-website": "vite --config vite.config.ts packages/50-mini-web-website",
+    "dev:50-website": "cd packages/50-mini-web-website & npm run dev",
     "dev:home": "cd packages/home & npm run dev"
   },
   "devDependencies": {
